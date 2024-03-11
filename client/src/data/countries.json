@@ -1,0 +1,200 @@
+[
+    {
+        "name": "Sweden",
+        "cities": [
+            "Stockholm",
+            "Gothenburg",
+            "Malmö"
+        ],
+        "phonePrefix": "+46"
+    },
+    {
+        "name": "Finland",
+        "cities": [
+            "Helsinki",
+            "Tampere",
+            "Turku"
+        ],
+        "phonePrefix": "+358"
+    },
+    {
+        "name": "Norway",
+        "cities": [
+            "Oslo",
+            "Bergen",
+            "Stavanger"
+        ],
+        "phonePrefix": "+47"
+    },
+    {
+        "name": "Denmark",
+        "cities": [
+            "Copenhagen",
+            "Aarhus",
+            "Odense"
+        ],
+        "phonePrefix": "+45"
+    },
+    {
+        "name": "Iceland",
+        "cities": [
+            "Reykjavik",
+            "Akureyri",
+            "Kópavogur"
+        ],
+        "phonePrefix": "+354"
+    },
+    {
+        "name": "Estonia",
+        "cities": [
+            "Tallinn",
+            "Tartu",
+            "Narva"
+        ],
+        "phonePrefix": "+372"
+    },
+    {
+        "name": "Latvia",
+        "cities": [
+            "Riga",
+            "Daugavpils",
+            "Liepāja"
+        ],
+        "phonePrefix": "+371"
+    },
+    {
+        "name": "Lithuania",
+        "cities": [
+            "Vilnius",
+            "Kaunas",
+            "Klaipėda"
+        ],
+        "phonePrefix": "+370"
+    },
+    {
+        "name": "Russia",
+        "cities": [
+            "Moscow",
+            "Saint Petersburg",
+            "Novosibirsk"
+        ],
+        "phonePrefix": "+7"
+    },
+    {
+        "name": "Belarus",
+        "cities": [
+            "Minsk",
+            "Gomel",
+            "Mogilev"
+        ],
+        "phonePrefix": "+375"
+    },
+    {
+        "name": "Ukraine",
+        "cities": [
+            "Kiev",
+            "Kharkiv",
+            "Odessa"
+        ],
+        "phonePrefix": "+380"
+    },
+    {
+        "name": "Poland",
+        "cities": [
+            "Warsaw",
+            "Kraków",
+            "Łódź"
+        ],
+        "phonePrefix": "+48"
+    },
+    {
+        "name": "Germany",
+        "cities": [
+            "Berlin",
+            "Hamburg",
+            "Munich"
+        ],
+        "phonePrefix": "+49"
+    },
+    {
+        "name": "Netherlands",
+        "cities": [
+            "Amsterdam",
+            "Rotterdam",
+            "The Hague"
+        ],
+        "phonePrefix": "+31"
+    },
+    {
+        "name": "Belgium",
+        "cities": [
+            "Brussels",
+            "Antwerp",
+            "Ghent"
+        ],
+        "phonePrefix": "+32"
+    },
+    {
+        "name": "France",
+        "cities": [
+            "Paris",
+            "Marseille",
+            "Lyon"
+        ],
+        "phonePrefix": "+33"
+    },
+    {
+        "name": "Spain",
+        "cities": [
+            "Madrid",
+            "Barcelona",
+            "Valencia"
+        ],
+        "phonePrefix": "+34"
+    },
+    {
+        "name": "Portugal",
+        "cities": [
+            "Lisbon",
+            "Porto",
+            "Vila Nova de Gaia"
+        ],
+        "phonePrefix": "+351"
+    },
+    {
+        "name": "Italy",
+        "cities": [
+            "Rome",
+            "Milan",
+            "Naples"
+        ],
+        "phonePrefix": "+39"
+    },
+    {
+        "name": "Greece",
+        "cities": [
+            "Athens",
+            "Thessaloniki",
+            "Patras"
+        ],
+        "phonePrefix": "+30"
+    },
+    {
+        "name": "Turkey",
+        "cities": [
+            "Istanbul",
+            "Ankara",
+            "Izmir"
+        ],
+        "phonePrefix": "+90"
+    },
+    {
+        "name": "Cyprus",
+        "cities": [
+            "Nicosia",
+            "Limassol",
+            "Larnaca"
+        ],
+        "phonePrefix": "+357"
+    }
+]
