@@ -2,8 +2,9 @@ import axios from "axios";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Form, Input, Button, Flex } from 'antd';
-import "./login.css";
+import { Form, Input, Button, Flex, Card, Col, Row } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Checkbox } from 'antd';
 
 const Login = () => {
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -26,76 +27,49 @@ const Login = () => {
   };
 
   return (
-    <Flex justify="center" align="center" style={{ height: "100vh" }}>
-      <Form
-        disabled={loading}
-        name="basic"
-        labelCol={{
-          span: 8,
-        }}
-        wrapperCol={{
-          span: 16,
-        }}
-        style={{
-          maxWidth: 600,
-        }}
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your username!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-        {error && <Form.Item wrapperCol={{
-          offset: 8,
-          span: 16,
+    <Row justify="center" align="middle" style={{ minHeight: "80vh" }}>
+      <Card>
+        <Col align="center" xs={{ span: 24 }} md={{ span: 12 }} style={{
+          maxWidth: "500px",
+          minWidth: "300px",
+          flex: "1 1 auto"
         }}>
-          <div style={{ color: "red" }}>Incorrect credentials</div>
-        </Form.Item>}
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Link to="/register">Don't have an account? Register</Link>
-        </Form.Item>
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
-    </Flex>
+          <Form
+            name="normal_login"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+          >
+            <Form.Item
+              name="username"
+              rules={[{ required: true, message: 'Please input your Username!' }]}
+            >
+              <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[{ required: true, message: 'Please input your Password!' }]}
+            >
+              <Input
+                prefix={<LockOutlined />}
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Item>
+            <Form.Item>
+              <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox>Remember me</Checkbox>
+              </Form.Item>
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+                Log in
+              </Button>
+              Or <Link to="/register">register now!</Link>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Card>
+    </Row>
   );
 };
 

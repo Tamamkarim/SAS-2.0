@@ -3,20 +3,18 @@ import SearchForHotels from "./searchForHotels";
 
 const Header = () => {
   return (
-    <Flex vertical align="center" style={{
-      height: "800px",
-      background: "linear-gradient(180deg, rgba(18,26,51,1) 0%, rgba(64,101,114,1) 72%, rgba(84,134,142,1) 100%)", padding: "50px", position: "relative"
+    <Flex vertical align="center" className="h-[820px]" style={{
+      background: "linear-gradient(180deg, rgba(0, 21, 41 ,1) 0%, rgba(64,101,114,1) 72%, rgba(84,134,142,1) 100%)", padding: "50px", position: "relative"
     }}>
-      <Flex justify="space-around" align="center" style={{ height: "200px", width: "100%" }}>
-        <h1 style={{ color: "white", fontSize: "3.5rem", textTransform: "uppercase", inlineSize: "460px", overflow: "hidden" }}>
+      <Flex justify="space-around" align="center" style={{ margin: "20px 0", height: "220px", width: "100%" }} wrap="wrap">
+        <h1 style={{ color: "white", fontSize: "3.5rem", textTransform: "uppercase", inlineSize: "460px", overflow: "hidden", textAlign: "center" }}>
           A journey of discovery
         </h1>
-        <p style={{ color: "white", fontSize: "1.2rem", inlineSize: "600px", overflow: "hidden" }}>
+        <p style={{ color: "white", fontSize: "1.2rem", inlineSize: "600px", overflow: "hidden", textAlign: "center" }}>
           Discover your next great adventure, become an explorer and travel the world.
         </p>
       </Flex>
-      <div style={{
-        overflow: "hidden",
+      <div className="hidden md:block" style={{
         borderRadius: "20px",
         width: "100%",
         height: "400px",

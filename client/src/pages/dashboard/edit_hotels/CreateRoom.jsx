@@ -1,16 +1,14 @@
 
-import React from 'react';
-import { Form, Input, Button, Card, Space, InputNumber } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Card, Space, InputNumber, DatePicker } from 'antd';
+import { CloseOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { RoomContext } from 'context/RoomContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 
 const CreateRoom = ({ hotel, form }) => {
     const { dispatch } = useContext(RoomContext);
-
-    const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
         if (hotel) {
@@ -18,8 +16,15 @@ const CreateRoom = ({ hotel, form }) => {
             axios.get(`http://localhost:8809/api/hotels/room/${hotel._id}`)
                 .then(res => {
                     dispatch({ type: "GET_ROOMS_SUCCESS", payload: res.data });
-                    setRooms(res.data);
-                    form.setFieldsValue({ rooms: res.data });
+
+                    const rooms = res.data.map(room => ({
+                        ...room,
+                        roomNumbers: room.roomNumbers.map(roomNumber => ({
+                            ...roomNumber,
+                            unavailableDates: roomNumber.unavailableDates.map(date => moment(date))
+                        }))
+                    }))
+                    form.setFieldsValue({ rooms });
                 })
                 .catch(error => {
                     dispatch({ type: "GET_ROOMS_FAILURE" });
@@ -55,6 +60,34 @@ const CreateRoom = ({ hotel, form }) => {
                         <Form.Item label="Description" name={[field.name, 'desc']} rules={[{ required: true, message: 'Please input the description of the room!' }]}>
                             <Input.TextArea autoSize={{ minRows: 2, maxRows: 4 }} />
                         </Form.Item>
+                        <Form.List name={[field.name, 'roomNumbers']}>
+                            {(subfields, subOpt) => (
+                                <div className='flex flex-col gap-4'>
+                                    {subfields.map((subfield, index) => (
+                                        <Space key={subfield.key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                                            <Form.Item
+                                                name={[subfield.name, 'number']}
+                                                rules={[{ required: true, message: 'Missing room number' }]}
+                                            >
+                                                <Input placeholder="Room Number" />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name={[subfield.name, 'unavailableDates']}
+                                                rules={[{ required: true, message: 'Missing unavailable dates' }]}
+                                            >
+                                                <DatePicker.RangePicker />
+                                            </Form.Item>
+                                            <MinusCircleOutlined onClick={() => subOpt.remove(subfield.name)} />
+                                        </Space>
+                                    ))}
+                                    <Form.Item>
+                                        <Button type="dashed" onClick={() => subOpt.add()} block icon={<PlusOutlined />}>
+                                            Add Room Number
+                                        </Button>
+                                    </Form.Item>
+                                </div>
+                            )}
+                        </Form.List>
                     </Card>
                 ))}
 

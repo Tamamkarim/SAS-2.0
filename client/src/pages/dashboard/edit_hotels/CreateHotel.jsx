@@ -1,4 +1,4 @@
-import { Form, Input, Upload, Cascader, Rate, InputNumber, Checkbox, message } from 'antd';
+import { Form, Input, Upload, Cascader, Rate, InputNumber, Checkbox, message, Select } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import axios from 'axios';
 import countries from '../../../data/countries.json'
@@ -34,11 +34,29 @@ const CreateHotel = ({ form, hotel }) => {
     };
 
     const updateHotel = async (values) => {
+        const { rooms, images, city, ...rest } = values;
         dispatch({ type: "UPDATE_HOTEL_START" });
         try {
             const res = await axios.put(`http://localhost:8809/api/hotels/${hotel._id}`, {
-                ...values,
+                ...rest,
+                city: city[1],
+                images: images != null ? images.map((image) => image.thumbUrl) : []
+
             });
+            const resRooms = await Promise.all(rooms.map(async (room) => {
+                if (!room._id) {
+                    const res = await axios.post(`http://localhost:8809/api/rooms/${hotel._id}`, {
+                        ...room,
+                    });
+                    return res.data
+                }
+                const res = await axios.put(`http://localhost:8809/api/rooms/${room._id}`, {
+                    ...room,
+                });
+                return res.data;
+            }))
+            const cheapestPrice = Math.min(...resRooms.map((room) => room.price));
+            await axios.put(`http://localhost:8809/api/hotels/${hotel._id}`, { cheapestPrice })
             dispatch({ type: "UPDATE_HOTEL_SUCCESS", payload: res.data });
         } catch (error) {
             dispatch({ type: "UPDATE_HOTEL_FAILURE" });
@@ -52,7 +70,7 @@ const CreateHotel = ({ form, hotel }) => {
             const hotelRes = await axios.post("http://localhost:8809/api/hotels", {
                 ...rest,
                 city: city[1],
-                images: images.map((image) => image.thumbUrl)
+                images: images != null ? images.map((image) => image.thumbUrl) : []
             });
             const resRooms = await Promise.all(rooms.map(async (room) => {
                 const res = await axios.post(`http://localhost:8809/api/rooms/${hotelRes.data._id}`, {
@@ -60,8 +78,9 @@ const CreateHotel = ({ form, hotel }) => {
                 });
                 return res.data;
             }))
-            console.log(resRooms)
-            dispatch({ type: "CREATE_HOTEL_SUCCESS", payload: hotelRes.data.details });
+            const cheapestPrice = Math.min(...resRooms.map((room) => room.price));
+            await axios.put(`http://localhost:8809/api/hotels/${hotelRes.data._id}`, { cheapestPrice })
+            dispatch({ type: "CREATE_HOTEL_SUCCESS", payload: hotelRes.data });
         } catch (error) {
             dispatch({ type: "CREATE_HOTEL_FAILURE" });
         }
@@ -99,7 +118,13 @@ const CreateHotel = ({ form, hotel }) => {
                 label="Type"
                 rules={[{ required: true, message: 'Please input the type of the hotel!' }]}
             >
-                <Input placeholder="Type" />
+                <Select placeholder="Type">
+                    <Select.Option value="hotel">Hotel</Select.Option>
+                    <Select.Option value="apartments">Apartments</Select.Option>
+                    <Select.Option value="resorts">Resorts</Select.Option>
+                    <Select.Option value="villas">Villas</Select.Option>
+                    <Select.Option value="cabins">Cabins</Select.Option>
+                </Select>
             </Form.Item>
             <Form.Item
                 name="city"

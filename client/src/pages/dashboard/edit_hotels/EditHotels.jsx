@@ -7,18 +7,14 @@ import CreateHotel from './CreateHotel';
 import { Form } from 'antd';
 import { useContext } from 'react';
 import { HotelContext } from '../../../context/HotelContext';
+import { Link } from 'react-router-dom';
 
 
 const EditHotels = () => {
     const { hotels, loading, error } = useContext(HotelContext);
-    const [list, setList] = useState(hotels);
     const [open, setOpen] = useState(false);
     const [form] = Form.useForm();
     const [selectedHotel, setSelectedHotel] = useState(null);
-
-    useEffect(() => {
-        setList(hotels);
-    }, [hotels]);
 
     const showDrawer = () => {
         setOpen(true);
@@ -31,10 +27,10 @@ const EditHotels = () => {
     return (
         <Flex vertical justify="center" align="center" style={{ height: "100%" }}>
             <List
-                style={{ width: "100%" }}
-                loading={loading}
+                style={{ width: "50%" }}
+                loading={false}
                 itemLayout="horizontal"
-                dataSource={list}
+                dataSource={hotels}
                 renderItem={(item) => (
                     <List.Item
                         key={item._id}
@@ -46,7 +42,7 @@ const EditHotels = () => {
                         <Skeleton avatar title={false} loading={loading} active>
                             <List.Item.Meta
                                 avatar={<Avatar src={item.photos.length > 0 && item.photos[0]} />}
-                                title={<a href="https://ant.design">{item.name}</a>}
+                                title={<Link to={`/hotels?id=${item._id}`}>{item.name}</Link>}
                                 description={item.desc}
                             />
                         </Skeleton>

@@ -4,6 +4,8 @@ import {
   deleteUser,
   getUser,
   getUsers,
+  checkIfUsernameExists,
+  checkIfEmailExists,
 } from "../controllers/user.js";
 import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
@@ -32,5 +34,9 @@ router.get("/:id", verifyUser, getUser);
 
 //GET ALL
 router.get("/", getUsers);
+
+router.get("/checkusername/:username", checkIfUsernameExists);
+
+router.get("/checkemail/:email", checkIfEmailExists);
 
 export default router;

@@ -5,6 +5,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { SearchContextProvider } from "./context/SearchContext";
 import { HotelContextProvider } from "context/HotelContext";
 import { RoomContextProvider } from "context/RoomContext";
+import "index.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

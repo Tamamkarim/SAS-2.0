@@ -8,4 +8,9 @@ const ProtectedRoute = () => {
     return (user && user.isAdmin) ? <Outlet /> : <Navigate to="/login" />;
 }
 
-export default ProtectedRoute;
+const PublicRoute = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return user ? <Navigate to="/" /> : <Outlet />;
+}
+
+export { PublicRoute, ProtectedRoute };

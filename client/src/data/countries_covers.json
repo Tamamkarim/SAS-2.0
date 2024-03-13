@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Stockholm",
+        "cover": "https://a.cdn-hotels.com/gdcs/production89/d1994/ea4f2268-288b-4f91-9891-1016953e03e6.jpg?impolicy=fcrop&w=1600&h=1066&q=high"
+    },
+    {
+        "name": "Gothenburg",
+        "cover": "https://goteborgsstadsmuseum.se/uploads/2023/10/Pressrelease-Det-speciella-med-Goteborg-Foto-Ulf-Celander-scaled.jpg"
+    },
+    {
+        "name": "Malmö",
+        "cover": "https://a.cdn-hotels.com/gdcs/production9/d482/99f71ade-8bd5-4646-b0a3-4a5053aaf9a5.jpg?impolicy=fcrop&w=800&h=533&q=high"
+    },
+    {
+        "name": "Helsinki",
+        "cover": "https://media.architecturaldigest.com/photos/5c9e699c1aeb991ed9e6da2b/16:9/w_1920,c_limit/GettyImages-183996236.jpg"
+    },
+    {
+        "name": "Turku",
+        "cover": "https://upload.wikimedia.org/wikipedia/commons/2/2a/View_from_Turku_Cathedral_tower.jpg"
+    },
+    {
+        "name": "Oslo",
+        "cover": "https://lp-cms-production.imgix.net/2023-03/shutterstock_1879262575.jpg"
+    },
+    {
+        "name": "Bergen",
+        "cover": "https://a.cdn-hotels.com/gdcs/production157/d661/0dcf4a5f-3f9f-410e-b5ce-ec9b9f856c52.jpg?impolicy=fcrop&w=800&h=533&q=high"
+    },
+    {
+        "name": "Stavanger",
+        "cover": "https://content.r9cdn.net/rimg/dimg/43/bb/dd7d13a8-city-32760-1682904a23f.jpg?width=1366&height=768&xhint=1468&yhint=1116&crop=true"
+    },
+    {
+        "name": "Copenhagen",
+        "cover": "https://media.cntraveler.com/photos/5bfdb12a1b3466234d8136c5/16:9/w_2580,c_limit/GettyImages-1045586638.jpg"
+    },
+    {
+        "name": "Aarhus",
+        "cover": "https://a.cdn-hotels.com/gdcs/production62/d681/3709d4b0-db83-11e8-8252-0242ac110006.jpg"
+    },
+    {
+        "name": "Odense",
+        "cover": "https://cdn.getyourguide.com/img/tour/039f50e0fd2bf4e3.jpeg/97.jpg"
+    }
+]
