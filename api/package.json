@@ -2,7 +2,6 @@
   "name": "SAS",
   "version": "1.0.0",
   "description": "",
-  "license": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
