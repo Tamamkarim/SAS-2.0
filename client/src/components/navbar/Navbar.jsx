@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <Header style={{ display: "flex", padding: "0 10rem", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ color: "white", fontSize: "1.2rem", fontWeight: "bold" }}>Halpaa Booking</div>
+      <div style={{ color: "white", fontSize: "1.2rem", fontWeight: "bold" }}>Dream Stay</div>
       <Menu
         theme="dark"
         mode="horizontal"
